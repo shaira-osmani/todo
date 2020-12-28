@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - "33060:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: MYSQL_PASSWORD
+      MYSQL_DATABASE: MYSQL_DB
+      MYSQL_USER: MYSQL_USER  
+      MYSQL_PASSWORD: MYSQL_PASSWORD
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks: 
+      - app_net
+    volumes: 
+      - mysqldb:/var/lib/mysql:cached
+
+networks: 
+  app_net:
+volumes: 
+  mysqldb:
